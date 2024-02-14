@@ -13,7 +13,7 @@ def drumFilter(name, ext, file_):
     file_, capitalizeNext, currWord = drumTag, False, ''
     for i in name:
         if i == ' ' or i == '-' or i == '_':
-            if currWord.lower() != drumTag.lower():
+            if currWord.lower() != drumTag.lower(): # don't duplicate drum tag
                 file_ += ' ' + currWord
             currWord = ''
             capitalizeNext = True
@@ -23,10 +23,9 @@ def drumFilter(name, ext, file_):
             capitalizeNext = False
         else:
             currWord += i.lower()
-    file_ += currWord + '.' + ext
+    file_ += ' ' + currWord + '.' + ext # append last word and extension
 
     # sort into respective drum folder then rename
-    src = musicPath + '/Drums'
     dest = musicPath + '/Drums/' + drumTag
     oldName = name + '.' + ext
 
@@ -41,7 +40,7 @@ def drumFilter(name, ext, file_):
 
 for file_ in list_:
     name, ext = os.path.splitext(file_)
-    ext = ext[1:]
+    ext = ext[1:].lower()
     if ext == "": # it's a folder...
         continue
     if ext == 'wav' or ext == 'mp3': # for music
@@ -57,3 +56,4 @@ for file_ in list_:
         print("damn can't sort this one chief")
     elif ext == 'pdf': # for documents
         shutil.move(path + '/' + file_, '/Users/kaleb/Documents/' + file_)
+    elif ext
