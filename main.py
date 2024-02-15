@@ -72,7 +72,7 @@ for file_ in list_:
             os.remove(path + '/' + file_)
             print('Deleted file: ' + file_)
     # images
-    elif ext.lower() == 'heic' or ext == 'jpg' or ext == 'png':
+    elif ext.lower() == 'heic' or ext.lower() == 'jpg' or ext.lower() == 'png':
         g.ckdir(photoPath)
         shutil.move(path + '/' + file_, photoPath + '/' + file_)
         print('Moved photo: ' + file_)
