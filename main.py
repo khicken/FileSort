@@ -32,7 +32,7 @@ photoPath = '/Users/%s/Pictures' %(user)
 ''' Code you don't have to look at commences forth here '''
 import os, shutil
 
-import filter as f
+import clean as f
 import guard as g
 
 list_ = os.listdir(path)
@@ -64,7 +64,7 @@ for file_ in list_:
         for docTag in docKeywords:
             if name.lower().__contains__(docTag.lower()):
                 g.ckdir(docPath)
-                f.filter(path, docPath, docTag, file_, False)
+                f.filter(path, docPath, docTag, file_, False, False)
                 print('Moved document: ' + file_)
                 moved = True
                 break
