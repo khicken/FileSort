@@ -1,0 +1,14 @@
+contextlib2==21.6.0
+exceptiongroup==1.2.0
+execnet==2.0.2
+iniconfig==2.0.0
+mock==5.1.0
+packaging==23.2
+path==16.10.0
+path.py==12.5.0
+pluggy==1.4.0
+pytest==8.0.0
+pytest-shutil==1.7.0
+six==1.16.0
+termcolor==2.4.0
+tomli==2.0.1
