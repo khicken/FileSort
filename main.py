@@ -47,9 +47,13 @@ for file_ in list_:
     # samples (music)
     if ext == 'wav' or ext == 'mp3': # for music
         if name.__contains__(' - '): # track
-            g.ckdir(musicPath + '/Tracks')
+            if(name.lower().__contains__('acapella')):
+                g.ckdir(musicPath + 'Acapellas')
+                shutil.move(path + '/' + file_, musicPath + '/Acapellas/' + file_)
+            else:
+                g.ckdir(musicPath + '/Tracks')
+                shutil.move(path + '/' + file_, musicPath + '/Tracks/' + file_)
             print('Moving track: ' + file_)
-            shutil.move(path + '/' + file_, musicPath + '/Tracks/' + file_)
             continue
         for drumTag in drumKeywords: # drum
             if name.lower().__contains__(drumTag.lower()):
