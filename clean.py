@@ -17,7 +17,7 @@ tag : str
 file_ : str
     File to be operated upon.
 folder : bool
-    True for generating folders to sort files, False for throwing them in the destination path.
+    True for generating folders to sort files (default), False for throwing them in the destination path.
 tagFirst : bool
     True for placing the keyword first in the renaming process (default), False otherwise.
 

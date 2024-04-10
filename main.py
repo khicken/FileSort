@@ -18,13 +18,16 @@ user = 'kaleb'
 
 # UPDATE THESE VARIABLES IF NECESSARY
 delDocs = True # deletes document if it doesn't contain any of the keywords
+clean = True # clean from the following extensions listed below
+cleanExts = ['asd']
 
 # UPDATE KEYWORDS IF NECESSARY
-drumKeywords = ['Kick', 'Snare', 'Hihat', 'Ride', 'Crash', 'Tom', 'Cymbal', 'Drum']
+drumKeywords = ['Kick', 'Snare', 'Hihat', 'Ride', 'Crash', 'Tom', 'Cymbal', 'Drum', 'Clap']
 docKeywords = ['Transcript', 'Resume', 'Card', 'Letter', 'ID', 'Final', 'Book']
 
 # UPDATE THESE PATHS IF NECESSARY
-path = '/Users/%s/Downloads' %(user)
+# path = '/Users/%s/Downloads' %(user)
+path = '/Users/%s/Desktop/Music/Samples' %(user)
 musicPath = '/Users/%s/Music/Ableton/User Library/Samples' %(user)
 docPath = '/Users/%s/Documents' %(user)
 photoPath = '/Users/%s/Pictures' %(user)
@@ -60,6 +63,9 @@ for file_ in list_:
                 g.ckdir(musicPath + '/Drums')
                 f.filter(path, musicPath + '/Drums', drumTag, file_)
                 break
+        if name.__contains__('bpm'): # loop
+            g.ckdir(musicPath + '/Loops')
+            shutil.move(path + '/' + file_, musicPath + '/Loops/' + file_)
         print("Can't sort this music sample chief")
     # documents
     elif ext == 'pdf' or ext == 'doc' or ext == 'docx': # for documents
@@ -80,3 +86,9 @@ for file_ in list_:
         g.ckdir(photoPath)
         shutil.move(path + '/' + file_, photoPath + '/' + file_)
         print('Moved photo: ' + file_)
+    # samples (music)
+    elif clean:
+        for e in cleanExts:
+            if e == ext:
+                os.remove(path + '/' + file_)
+                print('Deleted file: %s' %(path + '/' + file_))
