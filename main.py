@@ -28,7 +28,7 @@ docKeywords = ['Transcript', 'Resume', 'Card', 'Letter', 'ID', 'Final', 'Book']
 # UPDATE THESE PATHS IF NECESSARY
 # path = '/Users/%s/Downloads' %(user)
 path = '/Users/%s/Desktop/Music/Samples' %(user)
-musicPath = '/Users/%s/Music/Ableton/User Library/Samples' %(user)
+samplesPath = '/Users/%s/Music/Ableton/User Library/Samples' %(user)
 docPath = '/Users/%s/Documents' %(user)
 photoPath = '/Users/%s/Pictures' %(user)
 
@@ -43,7 +43,7 @@ list_ = os.listdir(path)
 # main function
 for file_ in list_:
     name, ext = os.path.splitext(file_)
-    ext = ext[1:]
+    ext = ext[1:].lower()
     # folders and unknown files
     if ext == '':
         continue
@@ -51,21 +51,21 @@ for file_ in list_:
     if ext == 'wav' or ext == 'mp3': # for music
         if name.__contains__(' - '): # track
             if(name.lower().__contains__('acapella')):
-                g.ckdir(musicPath + 'Acapellas')
-                shutil.move(path + '/' + file_, musicPath + '/Acapellas/' + file_)
+                g.ckdir(samplesPath + 'Acapellas')
+                shutil.move(path + '/' + file_, samplesPath + '/Acapellas/' + file_)
             else:
-                g.ckdir(musicPath + '/Tracks')
-                shutil.move(path + '/' + file_, musicPath + '/Tracks/' + file_)
+                g.ckdir(samplesPath + '/Tracks')
+                shutil.move(path + '/' + file_, samplesPath + '/Tracks/' + file_)
             print('Moving track: ' + file_)
             continue
         for drumTag in drumKeywords: # drum
             if name.lower().__contains__(drumTag.lower()):
-                g.ckdir(musicPath + '/Drums')
-                f.filter(path, musicPath + '/Drums', drumTag, file_)
+                g.ckdir(samplesPath + '/Drums')
+                f.filter(path, samplesPath + '/Drums', drumTag, file_)
                 break
         if name.__contains__('bpm'): # loop
-            g.ckdir(musicPath + '/Loops')
-            shutil.move(path + '/' + file_, musicPath + '/Loops/' + file_)
+            g.ckdir(samplesPath + '/Loops')
+            shutil.move(path + '/' + file_, samplesPath + '/Loops/' + file_)
         print("Can't sort this music sample chief")
     # documents
     elif ext == 'pdf' or ext == 'doc' or ext == 'docx': # for documents
@@ -82,7 +82,7 @@ for file_ in list_:
             os.remove(path + '/' + file_)
             print('Deleted file: ' + file_)
     # images
-    elif ext.lower() == 'heic' or ext.lower() == 'jpg' or ext.lower() == 'png':
+    elif ext == 'heic' or ext == 'jpg' or ext == 'png':
         g.ckdir(photoPath)
         shutil.move(path + '/' + file_, photoPath + '/' + file_)
         print('Moved photo: ' + file_)
