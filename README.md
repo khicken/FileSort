@@ -1,4 +1,7 @@
 # FileSort
-Sorts, formats, and cleans files
+Sorts, formats, and cleans files.
 
-TODO: use PyTorch to analyze drum shots for customized sample sorting
+TODO:
+- finish current college semester
+- use PyTorch to analyze drum shots for customized sample sorting
+- create GUI for scalability for MacOS
