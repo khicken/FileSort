@@ -1,7 +1,6 @@
 # FileSort
-Sorts, formats, and cleans files.
+File cleaning automator
 
 TODO:
-- finish current college semester
 - use PyTorch to analyze drum shots for customized sample sorting
 - create GUI for scalability for MacOS
