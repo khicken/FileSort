@@ -1,6 +1,2 @@
 # FileSort
-File cleaning automator
-
-TODO:
-- use PyTorch to analyze drum shots for customized sample sorting
-- create GUI for scalability for MacOS
+just cleans my files it's not that deep
